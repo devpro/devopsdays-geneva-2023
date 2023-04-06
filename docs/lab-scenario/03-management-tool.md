@@ -15,8 +15,8 @@ helm install cert-manager jetstack/cert-manager --namespace cert-manager --creat
 Once the helm chart is installed, monitor the rollout status of the deployments.
 
 ```ctr:Management01
-kubectl -n cert-manager rollout status deploy/cert-manager
-kubectl -n cert-manager-webhook rollout status deploy/cert-manager
+kubectl rollout status deploy/cert-manager -n cert-manager
+kubectl rollout status deploy/cert-manager-webhook -n cert-manager
 ```
 
 You should eventually receive output similar to:
@@ -24,9 +24,36 @@ You should eventually receive output similar to:
 > Waiting for deployment "cert-manager" rollout to finish: 0 of 1 updated replicas are available...
 > deployment "cert-manager" successfully rolled out
 
+## Create ClusterIssuers
+
+We'll use Let's Encrypt to generate valid certificates.
+
+```ctr:Management01
+cat << EOF > clusterissuer.yaml
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: workshop@devopsdays.org
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+EOF
+kubectl apply -f clusterissuer.yaml
+```
+
 ## Install Rancher
 
 Rancher is an open source solution to manage Kubernetes clusters.
+
+### Option 1 - Rancher with self-generated certificate
 
 ```ctr:Management01
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
@@ -35,13 +62,27 @@ kubectl create namespace cattle-system
 helm upgrade --install rancher rancher-stable/rancher \
   --set hostname=rancher.${vminfo:management01:public_ip}.sslip.io \
   --set replicas=1 \
+  --version 2.7.1 \
   --namespace cattle-system
+kubectl rollout status deploy/rancher -n cattle-system
 ```
 
-Before we access Rancher, we need to make sure that `cert-manager` has signed a certificate using the `cattle-ca` in order to make sure our connection to Rancher does not get interrupted. The following bash script will check for the certificate we are looking for.
+### Option 2 - Rancher with Let's Encrypt generated certificate
 
 ```ctr:Management01
-while true; do curl -kv https://rancher.${vminfo:Management01:public_ip}.sslip.io 2>&1 | grep -q "dynamiclistener-ca"; if [ $? != 0 ]; then echo "Rancher isn't ready yet"; sleep 5; continue; fi; break; done; echo "Rancher is Ready";
+helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+helm repo update
+kubectl create namespace cattle-system
+helm upgrade --install rancher rancher-stable/rancher \
+  --set hostname=rancher.${vminfo:management01:public_ip}.sslip.io \
+  --set replicas=1 \
+  --set 'ingress.extraAnnotations.cert-manager\.io/cluster-issuer=letsencrypt-prod' \
+  --set ingress.ingressClassName=nginx \
+  --set ingress.tls.source=secret \
+  --set ingress.tls.secretName=rancher-tls \
+  --version 2.7.1 \
+  --namespace cattle-system
+kubectl rollout status deploy/rancher -n cattle-system
 ```
 
 ## Accessing Rancher

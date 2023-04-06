@@ -21,7 +21,7 @@ sudo chmod +x /usr/local/bin/kubectl
 We can test `kubectl` and make sure it is properly installed.
 
 ```ctr:Management01
-kubectl version --client
+kubectl version --client --short
 ```
 
 ## Install Helm
@@ -32,7 +32,7 @@ Helm is a very popular package manager for Kubernetes and will be used to instal
 sudo curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 sudo chmod 700 get_helm.sh
 sudo ./get_helm.sh
-sudo -f ./get_helm.sh
+sudo rm -f ./get_helm.sh
 ```
 
 We can check the installation.
@@ -43,7 +43,7 @@ helm version --client
 
 ## Download a Kubernetes distribution
 
-We will use RKE (Rancher Kubernetes Engine).
+We will use [RKE](https://github.com/rancher/rke) (Rancher Kubernetes Engine).
 
 ```ctr:Management01
 sudo wget -O /usr/local/bin/rke https://github.com/rancher/rke/releases/download/v1.4.3/rke_linux-amd64

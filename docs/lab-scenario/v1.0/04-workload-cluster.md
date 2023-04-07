@@ -16,7 +16,7 @@ In this step, we will be creating a Kubernetes Lab environment from Rancher.
 
 ### Start the Rancher Kubernetes Cluster Bootstrapping Process
 
-**IMPORTANT NOTE:** Make sure you have selected the `Workload01` tab in HobbyFarm in the window to the right. If you run this command on `Rancher01` you will cause problems for your scenario session.
+**IMPORTANT NOTE:** Make sure you have selected the `Workload01` tab in HobbyFarm in the window to the right. If you run this command on `Management01` you will cause problems for your scenario session.
 
 1. Take the copied docker command and run it on `Workload01`
 2. Once the `docker run` command is complete, you should see a message similiar to `1 node has registered`

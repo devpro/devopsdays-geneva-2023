@@ -1,0 +1,42 @@
+defaultNamespace: sales-portal
+helm:
+  repo: https://devpro.github.io/helm-charts
+  chart: devpro-salesportal
+  version: 0.1.0
+  releaseName: devpro-salesportal
+  values:
+    front:
+      tls:
+        secretName: sales-portal-tls
+    adapter:
+      tls:
+        secretName: crm-adapter-tls
+    data:
+      tls:
+        secretName: crm-data-tls
+    mongodb:
+      enabled: true
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+targetCustomizations:
+  - name: aks-business-blueprod
+    # sales-portal-beta namespace
+    helm:
+      front:
+        host: sales-portal.20.31.7.5.sslip.io
+      adapter:
+        host: crm-adapter.20.31.7.5.sslip.io
+      data:
+        host: crm-data.20.31.7.5.sslip.io
+        db:
+          connectionString: mongodb://root:admin@sales-portal-beta-mongodb:27017/sales-portal-beta?authSource=admin
+          databaseName: sales-portal-beta
+      dotnet:
+        environment: Development
+      mongodb:
+        auth:
+          rootPassword: admin
+    clusterName: c-x6vsb

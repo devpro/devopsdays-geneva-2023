@@ -1,3 +1,3 @@
-# DevOpsDays Genevra Geneva '23
+# DevOpsDays Geneva '23
 
-Presentation material for DevOpsDays Geneva 2023 edition.
+Presentation material for DevOpsDays Geneva, 2023 edition.

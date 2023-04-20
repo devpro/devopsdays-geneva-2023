@@ -1,0 +1,9 @@
+defaultNamespace: authentication
+helm:
+  repo: https://devpro.github.io/helm-charts
+  chart: keycloak
+  version: 0.1.0
+  releaseName: keycloak
+  values:
+    registration:
+      emailAddress: bertrand@devpro.fr

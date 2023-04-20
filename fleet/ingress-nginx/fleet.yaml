@@ -1,0 +1,6 @@
+defaultNamespace: ingress-nginx
+helm:
+  repo: https://devpro.github.io/helm-charts
+  chart: ingress-nginx
+  version: 0.1.2
+  releaseName: ingress-nginx

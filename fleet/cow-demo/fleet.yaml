@@ -1,0 +1,24 @@
+defaultNamespace: sample-apps
+helm:
+  repo: https://devpro.github.io/helm-charts
+  chart: cow-demo
+  version: 0.1.1
+  releaseName: cow-demo
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      tls:
+        secretName: "cow-demo-tls"
+targetCustomizations:
+  - name: aks-business-blueprod
+    # TODO: update W.X.Y.Z to your external IP address (look at Ingress Controller)
+    helm:
+      values:
+        replicaCount: 1
+        host: cow-demo.W.X.Y.Z.sslip.io
+        cow:
+          color: red
+    # TODO: update c-xxxx with your cluster id value
+    clusterName: c-xxxx

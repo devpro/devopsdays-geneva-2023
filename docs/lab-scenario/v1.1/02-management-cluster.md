@@ -1,8 +1,8 @@
 ## Creating a Kubernetes cluster for management tools
 
-We can run any distribution that is certified to be standard compliant by the Cloud Native Computing Foundation (CNCF). We'll use [K3s](https://k3s.io/).
+ℹ _We can run any Kubernetes distribution that is certified to be standard compliant by the Cloud Native Computing Foundation (CNCF)_
 
-K3s is a lightweight Kubernetes distribution, which is easy and fast to install and upgrade and has a low resource consumption. You can run it in your datacenter, in the cloud as well as on edge devices. It works great on a single-node as well in large, highly available setups.
+[K3s](https://k3s.io/) is a lightweight Kubernetes distribution, which is easy and fast to install and upgrade and has a low resource consumption. We'll install it on `management01`:
 
 ```ctr:Management01
 curl -sfL https://get.k3s.io | \
@@ -11,7 +11,7 @@ curl -sfL https://get.k3s.io | \
 
 ## Testing your cluster
 
-K3s now created a new Kubernetes cluster and installed the kubectl CLI that you can directly use to interact with Kubernetes API.
+ℹ _K3s now created a new Kubernetes cluster and installed the kubectl CLI that you can directly use to interact with Kubernetes API_
 
 To list all the nodes in the cluster and check their status:
 
@@ -19,12 +19,12 @@ To list all the nodes in the cluster and check their status:
 kubectl get nodes
 ```
 
-The cluster should have one node, and the status should be "Ready".
+> The cluster should have one node, and the status should be "Ready"
 
-To list all the Pods in all Namespaces of the cluster:
+To list all the pods in all namespaces of the cluster:
 
 ```ctr:Management01
 kubectl get pods --all-namespaces
 ```
 
-All Pods shoud have the status "Running", or "Completed".
+> All Pods shoud have the status "Running", or "Completed"

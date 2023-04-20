@@ -1,4 +1,4 @@
-Welcome!
+## Welcome
 
 In this scenario, we will be walking through installing components to practice **Continuous Delivery** in a **Cloud Native** environment.
 

@@ -2,7 +2,7 @@ defaultNamespace: sales-portal
 helm:
   repo: https://devpro.github.io/helm-charts
   chart: devpro-salesportal
-  version: 0.1.0
+  version: 0.1.1
   releaseName: devpro-salesportal
   values:
     front:
@@ -20,7 +20,7 @@ helm:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
     dotnet:
       enableOpenTelemetry: true
 targetCustomizations:
@@ -40,6 +40,8 @@ targetCustomizations:
         dotnet:
           environment: Development
           enableSwagger: true
+          skipCertificateValidation: true
+          logLevel: Debug
         mongodb:
           auth:
             rootPassword: admin

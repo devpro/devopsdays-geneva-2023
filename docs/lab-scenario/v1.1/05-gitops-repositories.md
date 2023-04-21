@@ -2,7 +2,8 @@
 
 ℹ _In a GitOps approach, components (Kubernetes objects) are defined in a git repository, in plain text files (usually YAML)_
 
-We need a cobebase to store our definitions. To start with already defined templates (Helm chart based), fork the example repository either on [GitHub](https://github.com/devpro/devopsdays-geneva-2023) or [GitLab](https://gitlab.com/devpro-labs/devopsdays-geneva-2023).
+We need a cobebase to store our definitions. To start with already defined templates (Helm chart based),
+fork the example repository either on [GitHub](https://github.com/devpro/devopsdays-geneva-2023) or [GitLab](https://gitlab.com/devpro-labs/devopsdays-geneva-2023).
 
 > You should now have your own public git repository for this lab (for example `https://github.com/myaccount/devopsdays-geneva-2023.git`)
 
@@ -50,7 +51,7 @@ We are already using it for the management tools and we'll use it for our worklo
 
 ### System
 
-Do the same as previous but with the name `system` and the paths (click on **Add Path** as many time as needed to have): `fleet/cert-manager`, `fleet/letsencrypt`, `fleet/nfs-server-provisioner`
+Do the same as previous but with the name `system` and the paths (click on **Add Path** as many time as needed to have): `fleet/cert-manager`, `fleet/nfs-server-provisioner`
 
 > Wait for **Clusters Ready** displays "1/1"
 
@@ -75,8 +76,8 @@ Do the same as previous but with the name `applications` and the paths: `fleet/c
 2. Finally, from the left menu, click on **Service Discovery** > **Ingresses** and look at available Ingresses
 3. Click on the <a href="https://sales-portal.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">cow-demo.${vminfo:Workload01:public_ip}.sslip.io</a> link
 
-## Look at the workload and open applications
+## Going further
 
-cert-manager.io/cluster-issuer:
-letsencrypt-prod
-selfsigned-cluster-issuer
+- Add `fleet/letsencrypt` in `system` GitOps repository and update `cert-manager.io/cluster-issuer` with `letsencrypt-prod` (instead of `selfsigned-cluster-issuer`)
+- Add `fleet/otel-collector` in `system` and look at the pod logs
+- Add `fleet/neuvector` in `system` and open <a href="https://neuvector.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">neuvector.${vminfo:Workload01:public_ip}.sslip.io</a>

@@ -27,8 +27,6 @@ We will be creating a Kubernetes Lab environment within Rancher on `workload01`:
 
 ## Explore the workload cluster
 
-From the left menu, open the cluster and look at the different informations.
+⚠ In the namespace filter at the top, select All Namespaces to see everything.
 
-In the namespace filter at the top, select All Namespaces to see everything.
-
-In **Apps** > **Installed Apps**, have a look at everything that has been deployed.
+From the left menu, open the cluster and look at the different informations. In **Apps** > **Installed Apps**, have a look at everything that has been deployed.

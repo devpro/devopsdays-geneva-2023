@@ -12,7 +12,7 @@ helm:
       tls:
         secretName: "cow-demo-tls"
 targetCustomizations:
-  - name: aks-business-blueprod
+  - name: demo
     # TODO: update W.X.Y.Z to your external IP address (look at Ingress Controller)
     helm:
       values:
@@ -20,5 +20,4 @@ targetCustomizations:
         host: cow-demo.W.X.Y.Z.sslip.io
         cow:
           color: red
-    # TODO: update c-xxxx with your cluster id value
-    clusterName: c-xxxx
+    clusterName: demo

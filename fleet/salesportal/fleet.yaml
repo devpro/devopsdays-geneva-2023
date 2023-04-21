@@ -22,7 +22,7 @@ helm:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
 targetCustomizations:
-  - name: lab
+  - name: demo
     # TODO: update W.X.Y.Z to your external IP address (look at Ingress Controller)
     helm:
       values:
@@ -40,5 +40,4 @@ targetCustomizations:
         mongodb:
           auth:
             rootPassword: admin
-    # TODO: update c-xxxx with your cluster id value
-    clusterName: c-xxxx
+    clusterName: demo

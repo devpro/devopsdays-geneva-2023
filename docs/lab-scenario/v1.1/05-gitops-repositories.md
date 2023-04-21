@@ -27,13 +27,12 @@ Review all the files in `fleet` folder and look for **TODO** to be completed bef
    - **Git Authentication**: leave `None` (except if you use a private repository)
    - **Helm Authentication**: leave `None`
    - **TLS Certificate Verification**: leave `Require a valid certificate`
-   - **Paths**: Click on **Add Path** as many time as needed to have: `fleet/crds`
-5. Click on **Next**
-6. Once the repository has been synchronized, go to **Apps** > **Charts**. There you will now see several new apps that you can install.
+   - **Paths**: `fleet/crds`
+5.
 
 ### System
 
-Do the same as previous but with the name `system` and the paths: `fleet/ingress-nginx`, `fleet/cert-manager`, `fleet/letsencrypt`, `fleet/nfs-server-provisioner`
+Do the same as previous but with the name `system` and the paths (click on **Add Path** as many time as needed to have): `fleet/cert-manager`, `fleet/letsencrypt`, `fleet/nfs-server-provisioner`
 
 ### Applications
 

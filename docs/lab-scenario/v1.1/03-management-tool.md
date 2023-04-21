@@ -1,6 +1,6 @@
 ## Installing Helm
 
-ℹ _Helm is a very popular package manager for Kubernetes_
+ℹ _[Helm](https://helm.sh/) is a very popular package manager for Kubernetes_
 
 We'll install Helm CLI locally:
 
@@ -55,7 +55,7 @@ kubectl rollout status deploy/cert-manager-webhook -n cert-manager
 
 ## Installing Rancher
 
-ℹ _Rancher is an open source solution to manage Kubernetes clusters_
+ℹ _[Rancher](https://www.rancher.com/) is an open source solution to manage Kubernetes clusters_
 
 We'll install Rancher with Helm:
 
@@ -82,10 +82,10 @@ kubectl rollout status deploy/rancher -n cattle-system
 1. Access Rancher Server at <a href="https://rancher.${vminfo:Management01:public_ip}.sslip.io" target="_blank">https://rancher.${vminfo:Management01:public_ip}.sslip.io</a>
 2. As Rancher is installed with a self-signed certificate from a CA that is not automatically trusted by your browser, you will see a certificate warning in your browser and you can safely skip this warning
 3. Enter the password `RancherOnK3s` when prompted for a password
-4. Select **Set a specific password to use**, and submit a simple password in case you get logged out during the scenario
-5. Make sure to agree to the **Terms & Conditions** and then click continue
-6. When prompted, the **Rancher Server URL** should be `rancher.${vminfo:Management01:public_ip}.sslip.io`, which is the hostname you used to access the server
+4. Check **End User License Agreement & Terms & Conditions** and then click **Continue**
 
-You will see the Rancher UI, with the `local` cluster in it. The `local` cluster is the cluster where Rancher itself runs, and should not be used for deploying your demo workloads.
+## Rancher UI
 
-In the top left corner of the UI, you can find a "burger menu" button, which opens up the global navigation menu. There you can access global applications and settings. You have quick links to explore all Rancher managed clusters and a way to get back to the Rancher home page.
+⚠ To avoid potential UI issues, you can deactivate protections (such as DuckDuckGo Chrome extension)
+
+You will see the `local` cluster. The `local` cluster is the cluster where Rancher itself runs, and should not be used for deploying your demo workloads.

@@ -2,4 +2,5 @@
 default: true
 MD013:              # Line length
   line_length: 300
+MD033: false        # Inline HTML
 MD041: false        # First line in a file should be a top-level heading

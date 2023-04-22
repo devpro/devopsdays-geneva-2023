@@ -78,6 +78,19 @@ Do the same as previous but with the name `applications` and the paths: `fleet/c
 
 ## Going further
 
-- Add `fleet/letsencrypt` in `system` GitOps repository and update `cert-manager.io/cluster-issuer` with `letsencrypt-prod` (instead of `selfsigned-cluster-issuer`)
-- Add `fleet/otel-collector` in `system` and look at the pod logs
-- Add `fleet/neuvector` in `system` and open <a href="https://neuvector.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">neuvector.${vminfo:Workload01:public_ip}.sslip.io</a>
+### Certificate generation with Let's Encrypt
+
+- Add `fleet/letsencrypt` in `system` GitOps repository
+- Update `cert-manager.io/cluster-issuer` with `letsencrypt-prod` (instead of `selfsigned-cluster-issuer`)
+- Open applications and check the certificate
+
+### Observability with OpenTelemetry
+
+- Add `fleet/otel-collector` in `system`
+- Update `enableOpenTelemetry` to `true`
+- Look at the collector pod logs
+
+### Security with NeuVector
+
+- Add `fleet/neuvector` in `system`
+- Open <a href="https://neuvector.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">neuvector.${vminfo:Workload01:public_ip}.sslip.io</a>

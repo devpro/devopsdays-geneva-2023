@@ -95,6 +95,8 @@ Do the same as previous but with the name `applications` and the paths: `fleet/c
 
 - Add `fleet/neuvector` in `system`
 - Open <a href="https://neuvector.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">neuvector.${vminfo:Workload01:public_ip}.sslip.io</a>
+- Login with admin/admin
+- Accept end user license agrement
 
 ### Update Sales Portal version
 

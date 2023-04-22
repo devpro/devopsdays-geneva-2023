@@ -74,7 +74,8 @@ Do the same as previous but with the name `applications` and the paths: `fleet/c
 
 1. In Rancher UI, in your workload cluster, from the left menu
 2. Finally, from the left menu, click on **Service Discovery** > **Ingresses** and look at available Ingresses
-3. Click on the <a href="https://sales-portal.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">cow-demo.${vminfo:Workload01:public_ip}.sslip.io</a> link
+3. Open Swagger definition at <a href="https://crm-data.${vminfo:Workload01:public_ip}.sslip.io/swagger" target="_blank">crm-data.${vminfo:Workload01:public_ip}.sslip.io</a> link to add some data
+4. Click on the <a href="https://sales-portal.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">sales-portal.${vminfo:Workload01:public_ip}.sslip.io</a> link to view the web app
 
 ## Going further
 
@@ -94,3 +95,8 @@ Do the same as previous but with the name `applications` and the paths: `fleet/c
 
 - Add `fleet/neuvector` in `system`
 - Open <a href="https://neuvector.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">neuvector.${vminfo:Workload01:public_ip}.sslip.io</a>
+
+### Update Sales Portal version
+
+- Make a change in the [codebase](https://github.com/devpro/sales-portal/) to trigger the creation of new container images
+- Update `tag` with the latest version

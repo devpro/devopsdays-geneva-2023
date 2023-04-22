@@ -2,7 +2,7 @@ defaultNamespace: sales-portal
 helm:
   repo: https://devpro.github.io/helm-charts
   chart: devpro-salesportal
-  version: 0.1.1
+  version: 0.1.2
   releaseName: devpro-salesportal
   values:
     front:

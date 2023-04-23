@@ -1,3 +1,4 @@
+# ref: https://github.com/devpro/helm-charts/tree/main/charts/opentelemetry-collector
 defaultNamespace: observability
 helm:
   repo: https://devpro.github.io/helm-charts

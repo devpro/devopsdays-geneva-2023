@@ -1,3 +1,4 @@
+# ref: https://github.com/devpro/helm-charts/tree/main/charts/cow-demo
 defaultNamespace: sample-apps
 helm:
   repo: https://devpro.github.io/helm-charts

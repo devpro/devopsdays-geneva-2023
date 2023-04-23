@@ -1,3 +1,4 @@
+# ref: https://github.com/devpro/helm-charts/tree/main/charts/ingress-nginx
 defaultNamespace: ingress-nginx
 helm:
   repo: https://devpro.github.io/helm-charts

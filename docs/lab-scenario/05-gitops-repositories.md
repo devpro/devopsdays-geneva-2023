@@ -65,15 +65,16 @@ Do the same as previous but with the name `applications` and the paths: `fleet/c
 
 ### Play with cows
 
-1. In Rancher UI, in your workload cluster, from the left menu, click on **Service Discovery** > **Ingresses** and look at available Ingresses
-2. Click on the <a href="https://cow-demo.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">cow-demo.${vminfo:Workload01:public_ip}.sslip.io</a> link
-3. In your GitOps repository, update `fleet/cow-demo/fleet.yaml` to have 2 cows in green, commit the change on your branch
-4. Go back to the cow web application and look at what happens
+1. Open <a href="https://cow-demo.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">cow-demo.${vminfo:Workload01:public_ip}.sslip.io</a> link
+2. In your GitOps repository, update `fleet/cow-demo/fleet.yaml` to have 2 cows in green, commit the change on your branch
+3. Go back to the cow web application and look at what happens
 
 ### More serious application
 
-1. In Rancher UI, in your workload cluster, from the left menu
-2. Finally, from the left menu, click on **Service Discovery** > **Ingresses** and look at available Ingresses
+ℹ _We'll be using a codebase made specifically for this workshop_
+
+1. Open the <a href="https://github.com/devpro/sales-portal" target="_blank">codebase</a> and check the lifecycle management: GitHub PR, GitHub Actions + security checks, SonarCloud, DockerHub, Helm chart repository
+2. In Rancher UI, in your workload cluster, from the left menu click on **Service Discovery** > **Ingresses** and look at available Ingresses
 3. Open Swagger definition at <a href="https://crm-data.${vminfo:Workload01:public_ip}.sslip.io/swagger" target="_blank">crm-data.${vminfo:Workload01:public_ip}.sslip.io</a> link to add some data
 4. Click on the <a href="https://sales-portal.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">sales-portal.${vminfo:Workload01:public_ip}.sslip.io</a> link to view the web app
 
@@ -81,23 +82,24 @@ Do the same as previous but with the name `applications` and the paths: `fleet/c
 
 ### Certificate generation with Let's Encrypt
 
-- Add `fleet/letsencrypt` in `system` GitOps repository
-- Update `cert-manager.io/cluster-issuer` with `letsencrypt-prod` (instead of `selfsigned-cluster-issuer`)
-- Open applications and check the certificate
+- Add `fleet/letsencrypt` in `system` GitRepo
+- Update `cert-manager.io/cluster-issuer` with `letsencrypt-prod` in container definitions (instead of `selfsigned-cluster-issuer`)
+- Open applications and check the certificates
 
 ### Observability with OpenTelemetry
 
-- Add `fleet/otel-collector` in `system`
-- Update `enableOpenTelemetry` to `true`
+- Add `fleet/otel-collector` in `system` GitRepo
+- Update `enableOpenTelemetry` to `true` in container definitions
 - Look at the collector pod logs
 
 ### Security with NeuVector
 
-- Add `fleet/neuvector` in `system`
+- Add `fleet/neuvector` in `system` GitRepo
 - Open <a href="https://neuvector.${vminfo:Workload01:public_ip}.sslip.io/" target="_blank">neuvector.${vminfo:Workload01:public_ip}.sslip.io</a>
 - Enter `admin` as username and password, check "I have read and agree to the End User License Agreement" and click on **Login**
+- Explore the UI
 
 ### Update Sales Portal version
 
 - Make a change in the [codebase](https://github.com/devpro/sales-portal/) to trigger the creation of new container images
-- Update `tag` with the latest version
+- Update `tag` with the latest version in container definitions

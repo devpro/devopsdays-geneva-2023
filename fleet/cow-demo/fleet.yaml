@@ -16,8 +16,8 @@ targetCustomizations:
   - name: demo
     helm:
       values:
-        replicaCount: 1
+        replicaCount: 5
         host: cow-demo.54.75.82.245.sslip.io
         cow:
-          color: red
+          color: green
     clusterName: demo
